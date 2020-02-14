@@ -6,25 +6,22 @@ cache:
   directories:
   - "~/.platformio"
 env:
-- PLATFORMIO_CI_SRC=src/
-
+  matrix:
+  - PLATFORMIO_CI_SRC=src/
+  global:
+    secure: BbY1O/oxfZ0tjM1Cw/XRop76LeWjI6OzsVnc730wYg2Wd9NQpiO02V4oTRskzHK+Yp3cw+LMOk+UhsfcarsEvn9vgRg6Be8yQ8MDE624xRGQE1HGEhz3+bhDkpPOXcDcF8kizNA0pxfFQmsbuoE674QPNbH2B8+rgveGcC8zR4Ctc/orSIwVH6zuntXF0Enw3IwdKgX9j2ostw8oRiefYjz4tWO15Z+WStQ0F0ft6ocBrB0mwrIBMNAynUV74YtZKuOZn8SN+3O0JMfqcj1BeziTjVmH7SR+KENQIAyNFTV6kAc/w0+ysaNsrlCbTDEPvYIvGZUL4vIZhmU4/TMpiOA4eCXw9Ew0FNyzKN1SlzsyXNiiD4rGqQ2UcfR3qlsnf9ukm9EKJzk9Yx6tXFz44vpKeksliW2PhFEQE5bw1S92sqjVMXpzt7KLNEIkqN5yasypSBiUn8BqPn5gKXz81nuW/2ugQwIUNwAhTK0g1YSIVdMV/JTdj2ZuHr6MC+a2tG2ZELCrAxEtL/3ElLgsbHfwJhvz6NWUiG6TXM8v5uym8cKDSMbnv320rD7iBGE7FXubxNvCq2btvBf9lGtwK0duKN7XBEVsAqcxDs4RNV1+a93IB4jM8kc9GVI/plcCA1ptoaEiBgohhpLc6NJ14cnC2HGIX3klMKrYhOrzAWM=
 before_install:
 - export TZ=Asia/Jakarta
-
-
 install:
 - pip install -U platformio
-- platformio update 
+- platformio update
 - platformio lib install 415
 - platformio lib install 64@5.13.4
 - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%y%m%d%H%M%S')}
-
 script:
 - platformio run -e nodemcuv2_deploy
 - platformio --version
- 
 deploy:
-
   on:
     all_branches: true
   name: stable
