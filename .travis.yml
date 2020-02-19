@@ -23,9 +23,11 @@ script:
 - platformio --version
 
 deploy:
+  name: stable
+  skip_cleanup: true
   provider: releases
   api_key:
     secure: Jb3ZyJ62+787cmQxRf5abhhBKOxBYZQQb6GU+WmyhTXpKA6XNP4OwMQtB3V/BiSUk39rx4QhxCt7F23oeNgObTnTaJk8DmPqlj4Dccn6i6jCNMypo08eYO+OpQoLHrsvpASj+PAq+qsjonr1zoEf5yOdxL5zslN160qU3cbySULCl7nwG5ZcCLGXY9Ujnay4uG51vApaWf96DhnuEn3KhsN2Hmiuf+GBJZ8+ixewfGIqDnk0SRR/i4LUOsKuSebw8ubm6SQ1ht+qSe7/kLC73VmOdFy0L20cdWLgd5dQyFgx1SEBim8Cmx5FHP7xek2FYNR3lazGk4OPDIReqxUwJpzPU3+6Ya8+YAagZhll6YQ18RCE++9pU04QDe5sRVLzVq1eMKQeF1R9Oal9mXNw3m/ronFjm1BnBiMi6L7uhN+TvOzp/Vo1vCx5x0WxP0+dVwsLa8zuAc1FUFZHPC+QomlP0QDTl5VsHZF2a35zqBXFYKFcJ/iP5DuWFPc+CxONwqFgWVYrNgQPd+euHQtZ5yX2X4scg65197ypBiiK3oSNN7UnlGTw4Dy+IuOwQact0duswwEDCLEBGbJRgl414OVR8n5swOvPn06HOVCt7MPTRxU/aU2qfzyAx925oX3JijINeObeJCZVRHEQnH3DTuRhPImk2kc15sGSOoNs4z8=
-  file: ".pio/build/nodemcuv2_deploy/firmware.bin"
+  file: '.pio/build/nodemcuv2_deploy/firmware.bin'
   on:
     repo: Pras360/aaa
