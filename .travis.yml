@@ -1,8 +1,33 @@
-language: python
+  language: python
+python:
+- '2.7'
+sudo: false
+cache:
+  directories:
+  - "~/.platformio"
+env:
+- PLATFORMIO_CI_SRC=src/
+
+before_install:
+- export TZ=Asia/Jakarta
+
+install:
+- pip install -U platformio
+- platformio update 
+- platformio lib install 415
+- platformio lib install 64@5.13.4
+- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%y%m%d%H%M%S')}
+
+script:
+- platformio run -e nodemcuv2_deploy
+- platformio --version
+
 deploy:
+  name: stable
+  skip_cleanup: true
   provider: releases
   api_key:
     secure: lUtWJJSHoSp9HD5e68Gd2VKQJR3DXij0/KIzpehVCqw0rHlJoLfVgYG6AfB1EjdFsio7z8bDiBeXYcEpCTCxhNbgAzDLW530HcV/uqt4RaF0DHzcumDimxfcUZGQua0lcfWlbQ5W7ZRSSlCyjKR/aMnpUBph9kTzhyLuntsKr1so346XFVUa3E0bQPCzZcGXKil52e7uzWAuXz4Dy+7Fajr3dmvkfzClo6UQKQ6SfKjnPQBa1wqMfzUOhQhpvyiyWCRYGojUi0U8zyWRRp/bdkqyf2ZkSf71fJdylEplr5xuAuaUP8QBavF5/MgVHxJOe/jxywLdBXXQKI+HjrxNRVBXHIqnxeObtNRe4BJAX9K4x/81kuxW1sSqrJPX/O0cQM4LagjrXIJIjXiPScIgpccpK6XzGz7WmTm7noTbnrQFDcUlm1nKBUbZgjTqGdNHUcNYai6IG/e8PZMN2BdimCV9BE4YmTOZqHYGepWQpHsRB9AvfZmPR81B4rx0aR4/nABaL4/v3LvjVyiToljwXUSb+BYikY+FHRZjHFx+KnyqHlb0P2uajwHEXE8axfy79QF4jg7lOxM6JQp8/APnIDanUXZ9eJoqlBsvbkme2ZhzgQKYsGxnOoygdedef853frdxZ4svIIMCppGiz5q2/YZzVLKESEVom2oTfWFfwPU=
-  file: ''
+  file: '.pio/build/nodemcuv2_deploy/firmware.bin'
   on:
     repo: Pras360/aaa
