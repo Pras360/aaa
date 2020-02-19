@@ -198,6 +198,6 @@ BLYNK_WRITE(V24){
       resetWifi();
   } 
 
-  //ini perubahan ke6
+  //ini perubahan ke8
 }
 

@@ -11,8 +11,6 @@ env:
 before_install:
 - export TZ=Asia/Jakarta
 
-
-
 install:
 - pip install -U platformio
 - platformio update 
@@ -25,7 +23,6 @@ script:
 - platformio --version
  
 deploy:
-
   on:
     all_branches: true
   name: stable
