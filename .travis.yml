@@ -1,4 +1,4 @@
-language: python
+  language: python
 python:
 - '2.7'
 sudo: false
@@ -6,22 +6,26 @@ cache:
   directories:
   - "~/.platformio"
 env:
-  matrix:
-  - PLATFORMIO_CI_SRC=src/
-  global:
-    secure: BbY1O/oxfZ0tjM1Cw/XRop76LeWjI6OzsVnc730wYg2Wd9NQpiO02V4oTRskzHK+Yp3cw+LMOk+UhsfcarsEvn9vgRg6Be8yQ8MDE624xRGQE1HGEhz3+bhDkpPOXcDcF8kizNA0pxfFQmsbuoE674QPNbH2B8+rgveGcC8zR4Ctc/orSIwVH6zuntXF0Enw3IwdKgX9j2ostw8oRiefYjz4tWO15Z+WStQ0F0ft6ocBrB0mwrIBMNAynUV74YtZKuOZn8SN+3O0JMfqcj1BeziTjVmH7SR+KENQIAyNFTV6kAc/w0+ysaNsrlCbTDEPvYIvGZUL4vIZhmU4/TMpiOA4eCXw9Ew0FNyzKN1SlzsyXNiiD4rGqQ2UcfR3qlsnf9ukm9EKJzk9Yx6tXFz44vpKeksliW2PhFEQE5bw1S92sqjVMXpzt7KLNEIkqN5yasypSBiUn8BqPn5gKXz81nuW/2ugQwIUNwAhTK0g1YSIVdMV/JTdj2ZuHr6MC+a2tG2ZELCrAxEtL/3ElLgsbHfwJhvz6NWUiG6TXM8v5uym8cKDSMbnv320rD7iBGE7FXubxNvCq2btvBf9lGtwK0duKN7XBEVsAqcxDs4RNV1+a93IB4jM8kc9GVI/plcCA1ptoaEiBgohhpLc6NJ14cnC2HGIX3klMKrYhOrzAWM=
+- PLATFORMIO_CI_SRC=src/
+
 before_install:
 - export TZ=Asia/Jakarta
+
+
+
 install:
 - pip install -U platformio
-- platformio update
+- platformio update 
 - platformio lib install 415
 - platformio lib install 64@5.13.4
 - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%y%m%d%H%M%S')}
+
 script:
 - platformio run -e nodemcuv2_deploy
 - platformio --version
+ 
 deploy:
+
   on:
     all_branches: true
   name: stable
@@ -29,5 +33,5 @@ deploy:
   provider: releases
   overwrite: true
   api_key:
-    secure: xANpxW6tVcEjIH880/JT5y9KNRSYPvc7ld5O7eqz7UQtWvb0OvMLRH9UQSDbqcnGPMxxomTkeJGxw5hX4MNWZbMuHhEZS8jxuEqM+fxo3GvwK9i/dx35ouDNRhi1eSRo4iWpHWsXjG+4dCXNOkRVJgI6tscyxnwsaqWSMB8kFLMA7UzxD9co+VuIDcZA+8p5sz+e1QEBJ62N4/bN4ARivY+a4eLpckVg6MQXLlRgu25R5gA4kB/WG6QEk8KjJH9Ws8w9k0Z+q1NsUGR0dJn9GUuqfFoN19pxdib3shT81vZ5LmA28rMks3xcP5otaEHRwQCn8qp4hDMGT+jjbzdsI+KJjPSBcSfQdwa3syDj5lSY+j+ZqFe8qvQ4zptIWt+/pPF5FSH54IMv00JuQVaKgXLJKtWbmyJJ54ohoVs2gIPRkNjlMLhrhKHir5lm0TAFH5AxMV1cX0KD43ox1Hjq9PdhhDkOnodJ6Uan2uTiGrueTruqS+2kDDABIZ/Vt3V95pZ3g4kCtvO//9YXcMx7/DzY0orx1FDtqqDzJb6rXvGog+Dy7Gy3Phjjhz1oNz9JJdKbt9/C8d/4EJ8TWVaH7Yjz08B1UEX9Ms56O61wH/Bn5NPKwr8KKO8ZgC7vNRxtAZiFcsjdJv7sJ6x9suNCPEePmF6vqZMk2VqF6+6QzpE=
+    secure: huUzBWcp1732b5038IlBKrX9ElQpM3Z6DVCNsUHsJ9xlwFseNHOWXoZNx2CHKJ8mhAgNe0oGOzJUFBP/BQYhjJdfokJ6/6+ipuMSimV2b3qfVCeaZJlsF2MpKE7N++H4pFPk3SQcBN9xBPIoaLD65fbBLuiXX68cwm0yAJUeX182qPOu9N9krs4+ljdGQfMza7l36Wv9fyMfObAEydT6dDPbcA7/QI9mZOa7l5kYpTw1ftVKGTLCMLwOH2zlKYp4SQoKn6bgEBGFVGmSjt0+mTylD1dxVFkVoS6Q2IFAWS6CNIQ6MdMQ/8t/JJhbJFUfhUR0RM9ycO9nNXA3QW1NMZHd5FaaGCnXEgSjok6kiW65AWZeq7RuCRamfk349fcOul47YRUEkf3xth397WVDKxue5Y7z0XlKb9w62VukNMTM+/c/W5DKS8sdDME/aB0emvIu9ibbM18p9oKV/2u8lHPOf46zcegtE+8/aYfL3nhMdDTcnwsSR77IZmVFmy6nTo1m7jEix3NxPe/nrQ+ShhlTajuoNBonG67qaiauMxZZ5juwkTLP1E6skNcMpsoNtRU4RaCMtOuuWqRK/MaVwEm2YJDd80JNFaZcANzoaZ/ms7cwrFRc2+TOlIorixjp8u/akH7ao2DmhtXf3/96OGhyPCrSR8W1TrOmuImig+4=
   file: ".pio/build/nodemcuv2_deploy/firmware.bin"
