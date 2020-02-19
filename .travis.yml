@@ -1,37 +1,8 @@
-  language: python
-python:
-- '2.7'
-sudo: false
-cache:
-  directories:
-  - "~/.platformio"
-env:
-  global : 
-    - secure : ix8RADz2zzK8ea/L8cQeWsYZikBbywqBzg8Jnl4hhHsaK1RsivOK2HoffICXgFZAccesS5qQUrSmFoVHQ1PA6cWzgzW9PLaDMoBu2WqmuFGpmV+O0wr0jsILgaTgiILxRqsrMQChoWyJ9qS41vdb5/zuHCQBDHQ//wxQSsEHIrEh81jbBwtXnKqs11mmNxg2XeHpDWtD7ILKSXQgW1ynhs+MeseUmcdMu3T0m+52xB6JnBv9NWwjiFUibtvXPut0uIiOYZeh/8ykXL8m6obQEfn52VCvvkB7KoC2RN1sXIN+JK4eQ/94dsUDfXtgOAgChEr414asffZISrdMExmM+45OBArD+UskyT8HyL5mQy1/2Hd80DkTaxNCzTygJhwOTCXcwNgNcnrPr9+nlC2jMKeOWPgQYWiS41AFE5bzgZoPXV1nx1PN7QbOh+v1WDzkLLsG/1jwib06dI9XjXBSX7RJ+QjUJj9+EF4qSuFZ38sCLwZuv1CbiYvelvaNy+TWLVB+jSBZWBoJKPyoobC5XOXnNuFiv37p3kwHs8hvJwJA62d9qWV/EKAKzF1spHSVn+z34rPSb3GlXmgX3X4QSpQL5Ir1WqdPfwwxAcWipHt35E0LS7Yv7LXeFHF5I/470xuHU7LX7GeynV3mnZaxFMgBYrrst2/wF/+pKjXD534= 
-- PLATFORMIO_CI_SRC=src/
-
-before_install:
-- export TZ=Asia/Jakarta
-
-install:
-- pip install -U platformio
-- platformio update 
-- platformio lib install 415
-- platformio lib install 64@5.13.4
-- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%y%m%d%H%M%S')}
-
-script:
-- platformio run -e nodemcuv2_deploy
-- platformio --version
- 
+language: python
 deploy:
-
-  on:
-    all_branches: true
-  name: stable
-  skip_cleanup: true
   provider: releases
-  overwrite: true
   api_key:
-    secure: ix8RADz2zzK8ea/L8cQeWsYZikBbywqBzg8Jnl4hhHsaK1RsivOK2HoffICXgFZAccesS5qQUrSmFoVHQ1PA6cWzgzW9PLaDMoBu2WqmuFGpmV+O0wr0jsILgaTgiILxRqsrMQChoWyJ9qS41vdb5/zuHCQBDHQ//wxQSsEHIrEh81jbBwtXnKqs11mmNxg2XeHpDWtD7ILKSXQgW1ynhs+MeseUmcdMu3T0m+52xB6JnBv9NWwjiFUibtvXPut0uIiOYZeh/8ykXL8m6obQEfn52VCvvkB7KoC2RN1sXIN+JK4eQ/94dsUDfXtgOAgChEr414asffZISrdMExmM+45OBArD+UskyT8HyL5mQy1/2Hd80DkTaxNCzTygJhwOTCXcwNgNcnrPr9+nlC2jMKeOWPgQYWiS41AFE5bzgZoPXV1nx1PN7QbOh+v1WDzkLLsG/1jwib06dI9XjXBSX7RJ+QjUJj9+EF4qSuFZ38sCLwZuv1CbiYvelvaNy+TWLVB+jSBZWBoJKPyoobC5XOXnNuFiv37p3kwHs8hvJwJA62d9qWV/EKAKzF1spHSVn+z34rPSb3GlXmgX3X4QSpQL5Ir1WqdPfwwxAcWipHt35E0LS7Yv7LXeFHF5I/470xuHU7LX7GeynV3mnZaxFMgBYrrst2/wF/+pKjXD534=
-  file: ".pio/build/nodemcuv2_deploy/firmware.bin"
+    secure: lUtWJJSHoSp9HD5e68Gd2VKQJR3DXij0/KIzpehVCqw0rHlJoLfVgYG6AfB1EjdFsio7z8bDiBeXYcEpCTCxhNbgAzDLW530HcV/uqt4RaF0DHzcumDimxfcUZGQua0lcfWlbQ5W7ZRSSlCyjKR/aMnpUBph9kTzhyLuntsKr1so346XFVUa3E0bQPCzZcGXKil52e7uzWAuXz4Dy+7Fajr3dmvkfzClo6UQKQ6SfKjnPQBa1wqMfzUOhQhpvyiyWCRYGojUi0U8zyWRRp/bdkqyf2ZkSf71fJdylEplr5xuAuaUP8QBavF5/MgVHxJOe/jxywLdBXXQKI+HjrxNRVBXHIqnxeObtNRe4BJAX9K4x/81kuxW1sSqrJPX/O0cQM4LagjrXIJIjXiPScIgpccpK6XzGz7WmTm7noTbnrQFDcUlm1nKBUbZgjTqGdNHUcNYai6IG/e8PZMN2BdimCV9BE4YmTOZqHYGepWQpHsRB9AvfZmPR81B4rx0aR4/nABaL4/v3LvjVyiToljwXUSb+BYikY+FHRZjHFx+KnyqHlb0P2uajwHEXE8axfy79QF4jg7lOxM6JQp8/APnIDanUXZ9eJoqlBsvbkme2ZhzgQKYsGxnOoygdedef853frdxZ4svIIMCppGiz5q2/YZzVLKESEVom2oTfWFfwPU=
+  file: ''
+  on:
+    repo: Pras360/aaa
