@@ -6,6 +6,8 @@ cache:
   directories:
   - "~/.platformio"
 env:
+  global : 
+    - secure : ix8RADz2zzK8ea/L8cQeWsYZikBbywqBzg8Jnl4hhHsaK1RsivOK2HoffICXgFZAccesS5qQUrSmFoVHQ1PA6cWzgzW9PLaDMoBu2WqmuFGpmV+O0wr0jsILgaTgiILxRqsrMQChoWyJ9qS41vdb5/zuHCQBDHQ//wxQSsEHIrEh81jbBwtXnKqs11mmNxg2XeHpDWtD7ILKSXQgW1ynhs+MeseUmcdMu3T0m+52xB6JnBv9NWwjiFUibtvXPut0uIiOYZeh/8ykXL8m6obQEfn52VCvvkB7KoC2RN1sXIN+JK4eQ/94dsUDfXtgOAgChEr414asffZISrdMExmM+45OBArD+UskyT8HyL5mQy1/2Hd80DkTaxNCzTygJhwOTCXcwNgNcnrPr9+nlC2jMKeOWPgQYWiS41AFE5bzgZoPXV1nx1PN7QbOh+v1WDzkLLsG/1jwib06dI9XjXBSX7RJ+QjUJj9+EF4qSuFZ38sCLwZuv1CbiYvelvaNy+TWLVB+jSBZWBoJKPyoobC5XOXnNuFiv37p3kwHs8hvJwJA62d9qWV/EKAKzF1spHSVn+z34rPSb3GlXmgX3X4QSpQL5Ir1WqdPfwwxAcWipHt35E0LS7Yv7LXeFHF5I/470xuHU7LX7GeynV3mnZaxFMgBYrrst2/wF/+pKjXD534= 
 - PLATFORMIO_CI_SRC=src/
 
 before_install:
