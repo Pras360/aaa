@@ -24,6 +24,8 @@ script:
 - platformio --version
 
 deploy:
+  on:
+    all_branches: true 
   #name: stable
   skip_cleanup: true
   provider: releases
