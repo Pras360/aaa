@@ -24,8 +24,10 @@ script:
 - platformio --version
 
 deploy:
-  all_branches: true
-  #name: stable
+
+  on:
+    all_branches: true
+  name: stable
   skip_cleanup: true
   provider: releases
   overwrite: true
@@ -34,5 +36,4 @@ deploy:
   file: 
   -".pio/build/nodemcuv2_deploy/firmware.bin"
   on:
-  all_branches: true
     repo: Pras360/aaa
