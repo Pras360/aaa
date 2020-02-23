@@ -9,7 +9,7 @@
 //================Version Steble or Unstable Conf ========
 bool stable = true;
 
-//==============================INISIALISASI=====================================
+//==============================INISIALISASI===================================== tai
 #define BLYNK_PRINT Serial
 #define TEXTIFY(A) #A
 #define ESCAPEQUOTE(A) TEXTIFY(A)
