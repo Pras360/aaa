@@ -24,6 +24,7 @@ script:
 - platformio --version
 
 deploy:
+  all_branches: true
   #name: stable
   skip_cleanup: true
   provider: releases
@@ -31,9 +32,7 @@ deploy:
   api_key:
     secure: O9ixTBF+9hARkbu2ldlsjRkEm7AtJEkp083AD0AQb2O8mMv98DldufmcFmbIJ1GPus6k57PpQfOprOizXSnCVbbYvSnrx9QgKZaq9im39l3WuYFLpxNNhXvurypeUS79W5Wd9snk7ogBZ9Nbjkim+5TzA0iPK+wmv9BENY3x6iSxcW87dqmlc5NhVzdyowU7EkUJ0gWviDeg//yfWYXFf0l7NfuaKK70WxbMA1301M7QWr4+IxTsCHkkuvBd7v3QZBw+duzBhT4pRrZ3v4buRTpWheP+EQ76yVymJgUxw1jm7ZUvuM2s2OOydgPbbfujSXz4g0A3r5p29gbFiOB9+wQN1u9pCSALZh5DkL8Ft9in7wrkB1Zw2iQvA62Aq5XCJqR+3uE3lfxu6PxObDH6mPLiNJzsHBURcNckXlM72sw5eiePfKxM/Lskj2IgVZnk01fFXDqIyG0j8hbzWuRRLIVzjO0imXOSYYDeynCIDSXQkaO3bmfRoJUiPx8AzcUEZOnsmtlsLJtk28EjUdlfoJRx295dzx6xE6+eRLD8ktUYnafVjKvSP43k22glTHjLIwEzUXinoXstD4ouIRUaS9fksjKLSeZm23P2B85q/vhm9r76HiNCtENEWmiLH9bNwE06wWOInzgcMkQ+VrCJ856amttr2iq/HFvI9HZrHss=
   file: 
-  -"README.md"
   -".pio/build/nodemcuv2_deploy/firmware.bin"
   on:
-  tags: false
   all_branches: true
     repo: Pras360/aaa
